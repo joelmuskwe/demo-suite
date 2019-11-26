@@ -7,5 +7,15 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "admin-desktop-e2e": {
+      "tags": []
+    },
+    "admin-desktop": {
+      "tags": []
+    },
+    "electron-desktop-app": {
+      "tags": []
+    }
+  }
 }

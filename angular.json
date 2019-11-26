@@ -1,7 +1,219 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "admin-desktop": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/admin/desktop",
+      "sourceRoot": "apps/admin/desktop/src",
+      "prefix": "demo-suite",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/admin/desktop",
+            "index": "apps/admin/desktop/src/index.html",
+            "main": "apps/admin/desktop/src/main.ts",
+            "polyfills": "apps/admin/desktop/src/polyfills.ts",
+            "tsConfig": "apps/admin/desktop/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/admin/desktop/src/favicon.ico",
+              "apps/admin/desktop/src/assets"
+            ],
+            "styles": ["apps/admin/desktop/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/admin/desktop/src/environments/environment.ts",
+                  "with": "apps/admin/desktop/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "admin-desktop:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "admin-desktop:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "admin-desktop:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/admin/desktop/tsconfig.app.json",
+              "apps/admin/desktop/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/admin/desktop/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/admin/desktop/jest.config.js",
+            "tsConfig": "apps/admin/desktop/tsconfig.spec.json",
+            "setupFile": "apps/admin/desktop/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "admin-desktop-e2e": {
+      "root": "apps/admin/desktop-e2e",
+      "sourceRoot": "apps/admin/desktop-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/admin/desktop-e2e/cypress.json",
+            "tsConfig": "apps/admin/desktop-e2e/tsconfig.e2e.json",
+            "devServerTarget": "admin-desktop:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "admin-desktop:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/admin/desktop-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/admin/desktop-e2e/**"]
+          }
+        }
+      }
+    },
+    "electron-desktop-app": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/admin/desktop",
+      "sourceRoot": "apps/admin/desktop/src",
+      "prefix": "demo-suite",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/electron-desktop-app",
+            "index": "apps/admin/desktop/src/index.html",
+            "main": "apps/admin/desktop/src/main.ts",
+            "polyfills": "apps/admin/desktop/src/polyfills.ts",
+            "tsConfig": "apps/admin/desktop/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/admin/desktop/src/favicon.ico",
+              "apps/admin/desktop/src/assets",
+              {
+                "glob": "**/*",
+                "input": "apps/electron-desktop-app/src/",
+                "ignore": ["**/*.ts"],
+                "output": ""
+              }
+            ],
+            "styles": ["apps/admin/desktop/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/admin/desktop/src/environments/environment.ts",
+                  "with": "apps/admin/desktop/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "electron-desktop-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "electron-desktop-app:build:production"
+            }
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
-  }
+    "defaultCollection": "@nstudio/xplat"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "admin-desktop"
 }
