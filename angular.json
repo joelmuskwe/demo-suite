@@ -8,32 +8,34 @@
           "style": "scss"
         }
       },
-      "root": "apps/admin/desktop",
-      "sourceRoot": "apps/admin/desktop/src",
+      "root": "apps/desktop",
+      "sourceRoot": "apps/desktop/src",
       "prefix": "demo-suite",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/admin/desktop",
-            "index": "apps/admin/desktop/src/index.html",
-            "main": "apps/admin/desktop/src/main.ts",
-            "polyfills": "apps/admin/desktop/src/polyfills.ts",
-            "tsConfig": "apps/admin/desktop/tsconfig.app.json",
+            "outputPath": "dist/apps/desktop",
+            "index": "apps/desktop/src/index.html",
+            "main": "apps/desktop/src/main.ts",
+            "polyfills": "apps/desktop/src/polyfills.ts",
+            "tsConfig": "apps/desktop/tsconfig.app.json",
             "aot": false,
             "assets": [
-              "apps/admin/desktop/src/favicon.ico",
-              "apps/admin/desktop/src/assets"
+              "apps/desktop/src/favicon.ico",
+              "apps/desktop/src/assets"
             ],
-            "styles": ["apps/admin/desktop/src/styles.scss"],
+            "styles": [
+              "apps/desktop/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/admin/desktop/src/environments/environment.ts",
-                  "with": "apps/admin/desktop/src/environments/environment.prod.ts"
+                  "replace": "apps/desktop/src/environments/environment.ts",
+                  "with": "apps/desktop/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -81,32 +83,35 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/admin/desktop/tsconfig.app.json",
-              "apps/admin/desktop/tsconfig.spec.json"
+              "apps/desktop/tsconfig.app.json",
+              "apps/desktop/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/admin/desktop/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/desktop/**"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/admin/desktop/jest.config.js",
-            "tsConfig": "apps/admin/desktop/tsconfig.spec.json",
-            "setupFile": "apps/admin/desktop/src/test-setup.ts"
+            "jestConfig": "apps/desktop/jest.config.js",
+            "tsConfig": "apps/desktop/tsconfig.spec.json",
+            "setupFile": "apps/desktop/src/test-setup.ts"
           }
         }
       }
     },
     "admin-desktop-e2e": {
-      "root": "apps/admin/desktop-e2e",
-      "sourceRoot": "apps/admin/desktop-e2e/src",
+      "root": "apps/desktop-e2e",
+      "sourceRoot": "apps/desktop-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/admin/desktop-e2e/cypress.json",
-            "tsConfig": "apps/admin/desktop-e2e/tsconfig.e2e.json",
+            "cypressConfig": "apps/desktop-e2e/cypress.json",
+            "tsConfig": "apps/desktop-e2e/tsconfig.e2e.json",
             "devServerTarget": "admin-desktop:serve"
           },
           "configurations": {
@@ -118,8 +123,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/admin/desktop-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/admin/desktop-e2e/**"]
+            "tsConfig": [
+              "apps/desktop-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/desktop-e2e/**"
+            ]
           }
         }
       }
@@ -131,38 +141,42 @@
           "style": "scss"
         }
       },
-      "root": "apps/admin/desktop",
-      "sourceRoot": "apps/admin/desktop/src",
+      "root": "apps/desktop",
+      "sourceRoot": "apps/desktop/src",
       "prefix": "demo-suite",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/apps/electron-desktop-app",
-            "index": "apps/admin/desktop/src/index.html",
-            "main": "apps/admin/desktop/src/main.ts",
-            "polyfills": "apps/admin/desktop/src/polyfills.ts",
-            "tsConfig": "apps/admin/desktop/tsconfig.app.json",
+            "index": "apps/desktop/src/index.html",
+            "main": "apps/desktop/src/main.ts",
+            "polyfills": "apps/desktop/src/polyfills.ts",
+            "tsConfig": "apps/desktop/tsconfig.app.json",
             "aot": false,
             "assets": [
-              "apps/admin/desktop/src/favicon.ico",
-              "apps/admin/desktop/src/assets",
+              "apps/desktop/src/favicon.ico",
+              "apps/desktop/src/assets",
               {
                 "glob": "**/*",
                 "input": "apps/electron-desktop-app/src/",
-                "ignore": ["**/*.ts"],
+                "ignore": [
+                  "**/*.ts"
+                ],
                 "output": ""
               }
             ],
-            "styles": ["apps/admin/desktop/src/styles.scss"],
+            "styles": [
+              "apps/desktop/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/admin/desktop/src/environments/environment.ts",
-                  "with": "apps/admin/desktop/src/environments/environment.prod.ts"
+                  "replace": "apps/desktop/src/environments/environment.ts",
+                  "with": "apps/desktop/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
